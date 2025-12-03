@@ -319,8 +319,8 @@ class StaleCompletion(TimeStampedModel):
         Metadata describing the StaleCompletion model.
         """
 
-        index_together = [
-            ('username', 'course_key', 'created', 'resolved'),
+        indexes = [
+            models.Index(fields=['username', 'course_key', 'created', 'resolved']),
         ]
 
     def __str__(self):
