@@ -259,9 +259,9 @@ class Aggregator(TimeStampedModel):
         Metadata describing the Aggregator model.
         """
 
-        index_together = [
-            ('user', 'aggregation_name', 'course_key'),
-            ('course_key', 'aggregation_name', 'block_key', 'percent'),
+        indexes = [
+            models.Index(fields=['user', 'aggregation_name', 'course_key']),
+            models.Index(fields=['course_key', 'aggregation_name', 'block_key', 'percent']),
         ]
 
         unique_together = [

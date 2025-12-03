@@ -14,6 +14,12 @@ Change Log
 Unreleased
 ~~~~~~~~~~
 
+[4.3.0] - 2025-12-02
+~~~~~~~~~~~~~~~~~~~~
+
+* Add support for Django 4.2-5.2 and Python 3.11-3.12.
+* Drop support for Django 3.2 and Python 3.8.
+
 [4.2.0] - 2024-06-21
 ~~~~~~~~~~~~~~~~~~~~
 
