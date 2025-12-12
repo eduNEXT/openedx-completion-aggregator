@@ -38,8 +38,7 @@ def make_datetime_timezone_unaware(date):
     """
     Return a timezone unaware(localize) version of the datetime instance.
     """
-    date = date.astimezone(timezone.utc).replace(tzinfo=None)
-    return date
+    return date.astimezone(timezone.utc).replace(tzinfo=None)
 
 
 def get_percent(earned, possible):
