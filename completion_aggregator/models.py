@@ -197,7 +197,7 @@ class AggregatorManager(models.Manager):
 
             event_name = f"openedx.completion_aggregator.progress.{block_type}"
 
-            with tracker.enter_context({"username": aggregator.user.username}):
+            with tracker.context({"username": aggregator.user.username}):
                 tracker.emit(
                     event_name,
                     {
