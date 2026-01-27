@@ -197,20 +197,21 @@ class AggregatorManager(models.Manager):
 
             event_name = f"openedx.completion_aggregator.progress.{block_type}"
 
-            tracker.emit(
-                event_name,
-                {
-                    "user_id": aggregator.user_id,
-                    "course_id": str(aggregator.course_key),
-                    "block_id": str(aggregator.block_key),
-                    "modified": aggregator.modified,
-                    "created": aggregator.created,
-                    "earned": aggregator.earned,
-                    "possible": aggregator.possible,
-                    "percent": aggregator.percent,
-                    "type": block_type,
-                }
-            )
+            with tracker.enter_context("username", aggregator.user.username):
+                tracker.emit(
+                    event_name,
+                    {
+                        "user_id": aggregator.user_id,
+                        "course_id": str(aggregator.course_key),
+                        "block_id": str(aggregator.block_key),
+                        "modified": aggregator.modified,
+                        "created": aggregator.created,
+                        "earned": aggregator.earned,
+                        "possible": aggregator.possible,
+                        "percent": aggregator.percent,
+                        "type": block_type,
+                    }
+                )
 
     def bulk_create_or_update(self, updated_aggregators):
         """
